@@ -1,0 +1,16 @@
+<fieldset>
+  <legend>Add event</legend>
+  <label>
+    <input #eName type="text" placeholder="Event name">
+  </label>
+  <label>
+    <input #eDate type="date" placeholder="Event date">
+  </label>
+  <label>
+    <input #eDuration type="text" placeholder="Event duration">
+  </label>
+  <label>
+    <input #eClasses type="text" placeholder="Event classes">
+  </label>
+  <button (click)='add(eName.value, eDate.value, eDuration.value, eClasses.value)'>Add event</button>
+</fieldset>
