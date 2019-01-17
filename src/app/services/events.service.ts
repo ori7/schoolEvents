@@ -6,9 +6,7 @@ import { EventModel } from '../event/models/event.model';
 })
 export class EventsService {
 
-  constructor() { }
-
-  get() :EventModel[] {
+  get(): EventModel[] {
     return [
       {
         name: 'Tu-bishvat',
@@ -28,4 +26,34 @@ export class EventsService {
       }
     ];
   }
+
+  allStorage(): EventModel[] {
+
+    var values = [],
+      keys = Object.keys(localStorage),
+      i = keys.length;
+
+    while (i--) {
+      const event = JSON.parse(localStorage.getItem(keys[i]));
+      values.push(event);
+    }
+
+    return values;
+  }
+
+  /*
+
+  getFromLocalStorage() : EventModel[] {
+    const eventsArray = [];
+    for (let i = 0; ; i++) {
+      const event = JSON.parse(localStorage.getItem(i));
+      if (event === null)
+        break;
+      eventsArray.push(event);
+    }
+    return eventsArray;
+  }
+
+  */
+
 }

@@ -14,7 +14,11 @@ export class ListEventsComponent implements OnInit {
   constructor(private eventsService: EventsService) { }
 
   ngOnInit() {
-    this.events = this.eventsService.get();
+    this.events = this.eventsService.allStorage();
+    var k = this.eventsService.get();
+    for (let i = 0; i < k.length; i++) {
+      this.events.push(k[i]);    
+    }
   }
 
 }
