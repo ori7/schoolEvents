@@ -6,9 +6,40 @@ import { EventModel } from '../event/models/event.model';
 })
 export class EventsService {
 
+  events: EventModel[] = [
+    {
+      id: 1,
+      name: 'Tu-bishvat',
+      date: new Date(2019, 0, 20),
+      duration: 2,
+      classes: [
+        'a', 'b', 'c'
+      ]
+    },
+    {
+      id: 2,
+      name: 'Purim',
+      date: new Date(2019, 1, 15),
+      duration: 5,
+      classes: [
+        'd', 'e'
+      ]
+    },
+    {
+      id: 3,
+      name: 'Purim 2',
+      date: new Date(2019, 1, 15),
+      duration: 4,
+      classes: [
+        'a', 'b'
+      ]
+    }
+  ]
+
   get(): EventModel[] {
     return [
       {
+        id: 1,
         name: 'Tu-bishvat',
         date: new Date(2019, 0, 20),
         duration: 2,
@@ -17,43 +48,33 @@ export class EventsService {
         ]
       },
       {
+        id: 2,
         name: 'Purim',
         date: new Date(2019, 1, 15),
         duration: 5,
         classes: [
           'd', 'e'
         ]
+      },
+      {
+        id: 3,
+        name: 'Purim 2',
+        date: new Date(2019, 1, 15),
+        duration: 4,
+        classes: [
+          'a', 'b'
+        ]
       }
     ];
   }
 
-  allStorage(): EventModel[] {
-
-    var values = [],
-      keys = Object.keys(localStorage),
-      i = keys.length;
-
-    while (i--) {
-      const event = JSON.parse(localStorage.getItem(keys[i]));
-      values.push(event);
-    }
-
-    return values;
+  saveInLocalStorage(): void {
+    localStorage.setItem('events', JSON.stringify(this.events));
   }
-
-  /*
 
   getFromLocalStorage() : EventModel[] {
-    const eventsArray = [];
-    for (let i = 0; ; i++) {
-      const event = JSON.parse(localStorage.getItem(i));
-      if (event === null)
-        break;
-      eventsArray.push(event);
-    }
+    const eventsArray = JSON.parse(localStorage.getItem('events'));
     return eventsArray;
   }
-
-  */
 
 }

@@ -14,11 +14,17 @@ export class ListEventsComponent implements OnInit {
   constructor(private eventsService: EventsService) { }
 
   ngOnInit() {
-    this.events = this.eventsService.allStorage();
-    var k = this.eventsService.get();
-    for (let i = 0; i < k.length; i++) {
-      this.events.push(k[i]);    
-    }
+
+    this.eventsService.saveInLocalStorage();
+
+    // this.events = this.eventsService.getFromLocalStorage();
+    this.events = this.eventsService.get();
+    
+  }
+
+  deliteEvent(id: number){
+    var event = this.events.findIndex(e => e.id == id);
+    this.events.splice(event,1);
   }
 
 }
