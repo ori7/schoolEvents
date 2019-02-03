@@ -13,10 +13,8 @@ export class AddEventComponent implements OnInit {
   ngOnInit() {
   }
 
-  // TODO: array of classes from checkbox;
-
+  /*
   add(name: string, date: Date, duration: number){
-
     if (name && date && duration) {
       const event = <EventModel>{
         name: name,
@@ -25,11 +23,7 @@ export class AddEventComponent implements OnInit {
       }
       this.saveInLocalStorage(name,event);
     }
-
   }
-
-  saveInLocalStorage(eventname, eventObject) {
-    localStorage.setItem(eventname, JSON.stringify(eventObject));
-  }
+  */
 
 }
